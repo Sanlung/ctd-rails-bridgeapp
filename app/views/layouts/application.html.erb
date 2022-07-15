@@ -1,19 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Bridge App</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= favicon_link_tag 'favicons/favicon.ico' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="min-vh-100 d-flex flex-column justify-content-start">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container px-4 px-sm-5">
+          <%= link_to categories_path, class: 'navbar-brand' do %>
+            <%= image_tag 'bridge_logo.png', alt: 'Bridge logo', class: 'logo rounded-circle' %>
+          <% end %>
+          <% if Current.user %>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-end"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav align-items-end">
+                <% @categories.each do |category| %>
+                  <li>
+                    <%= link_to category_questions_path(category.id), class: 'nav-link' do %>
+                      <%= category.title %>
+                    <% end %>
+                  </li>
+                <% end %>
+                <li>
+                  <%= link_to 'Logout', welcome_path, method: :delete, class: 'nav-link' %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </nav>
+
+      <div class="jumbotron-fluid text-center text-white">
+        <div class="container">
+          <h1 class="display-5 text-uppercase mb-5"><%= yield :h1 %></h1>
+          <p class="lead text-uppercase mb-5">
+            We Connect the Justice Impacted
+          </p>
+          <p class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+            Bridge is dedicated to the community by Code the Dream's Ruby on Rails, Orange Starfish program.
+          </p>
+        </div>
+      </div>
+
+      <div class="flash-message row text-center">
+        <% if !flash[:alert].nil? %>
+          <p class="w-100 bg-warning">
+            <%= flash[:alert] %>
+          </p>
+        <% elsif !flash[:notice].nil? %>
+          <p class="w-100 bg-info">
+            <%= flash[:notice] %>
+          </p>
+        <% end %>
+      </div>
+    </header>
+
+    <main class="container p-5"><%= yield %></main>
+
+    <footer class="row bg-dark pt-2 pb-3 mt-auto">
+      <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+          <%= link_to 'https://github.com/Sanlung/ctd-rails-bridgeapp', target: '_blank' do %>
+            <i class="bi bi-github profile fs-2 text-white"></i>
+          <% end %>
+          <%= link_to 'https://github.com/Sanlung', target: '_blank' do %>
+            <%= image_tag 'chung-profile.jpeg', alt: 'Picture of Chung Kao', class: 'profile rounded-circle' %>
+          <% end %>
+        </div>
+        <p class="text-center text-light mb-0">
+          &copy; <%= Date.today.year %> by Chung Kao
+        </p>
+      </div>
+    </footer>
+    <%= javascript_pack_tag 'main' %>
+    <%= yield :javascript %>
   </body>
 </html>

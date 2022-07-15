@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
   before_action :set_question
   before_action :set_answers
   before_action :set_answer, only: %i[edit update destroy]
-  before_actions :set_user, only: %i[edit create]
+  before_action :set_user, only: %i[edit create]
 
   # GET /categories/1/questions/1/answers
   def index; end

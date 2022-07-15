@@ -1,0 +1,18 @@
+<%= form_with model: question, url: category_question_path, id: 'edit-question-form', multipart: true do |form| %>
+<div class="modal-body">
+  <%= form.text_area :content, required: true, rows: '6', placeholder: 'Submission without selecting the category to which this question relates will not be accepted.', class: "form-control mb-3" %>
+  <%= form.collection_select :category_id, Category.order(:id), :id, :title, { prompt: 'Select category' }, required: true, class: 'form-select w-50' %>
+  <%= form.text_field :user_id, type: 'hidden', value: Current.user.id %>
+</div>
+
+<div class="modal-footer" id="model-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    data-bs-dismiss="modal"
+  >
+    Cancel
+  </button>
+  <%= form.submit "Update", class: 'btn btn-primary' %>
+</div>
+<% end %>

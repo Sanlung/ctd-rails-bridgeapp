@@ -1,0 +1,31 @@
+<% content_for :h1 do %>Bridge Knowledge<% end %>
+
+<section>
+  <h1
+    class="text-center text-white display-5 text-uppercase mb-5 bg-transparent shadow rounded"
+  >
+    <%= @category.title %>
+  </h1>
+  <!-- Button redirecting to :new -->
+  <div class="btn-container text-end">
+    <%= link_to 'New or update questions', new_category_question_path(@category.id), type: 'button', class: 'btn btn-primary mb-5 shadow', style: 'letter-spacing: -0.3px' %>
+  </div>
+  <% @questions.each do |question| %>
+    <%= link_to category_question_answers_path(@category.id, question.id), class: 'btn message w-100 p-3 pb-1 mb-4 rounded shadow text-decoration-none' do %>
+      <p class="text-start">
+        <i class="bi bi-person-circle"></i>
+        <i class="bi bi-dash-lg"></i>
+        <b>Asked</b> <%= question.user.username %>
+        <i class="bi bi-dash-lg"></i>
+        <%= question.created_at %>
+      </p>
+      <p class="text-start fw-bold w-100 d-inline-flex justify-content-between">
+        <%= question.content %>
+      </p>
+      <p class="text-end text-success">
+        <i class="bi bi-dash-lg"></i>
+        Click to view answers
+      </p>
+    <% end %>
+  <% end %>
+</section>

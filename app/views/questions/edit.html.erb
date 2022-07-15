@@ -1,0 +1,60 @@
+<% content_for :h1 do %>Bridge Knowledge<% end %>
+
+<section>
+  <h1
+    class="text-center text-white display-5 text-uppercase mb-5 bg-transparent shadow rounded"
+  >
+    <%= @category.title %>
+  </h1>
+  <div class="btn-container text-end">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary mb-5 shadow"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      Update question
+    </button>
+    <%= link_to 'New/update others', new_category_question_path(@category.id), type: 'button', class: 'btn btn-primary mb-5 shadow', style: 'letter-spacing: -0.3px' %>
+  </div>
+  <div class="btn message w-100 p-3 pb-1 mb-4 rounded shadow text-decoration-none">
+    <p class="text-start">
+      <i class="bi bi-person-circle"></i>
+      <i class="bi bi-dash-lg"></i>
+      <b>Asked</b> <%= @question.user.username %>
+      <i class="bi bi-dash-lg"></i>
+      <%= @question.created_at %>
+    </p>
+    <p class="text-start fw-bold w-100 d-inline-flex justify-content-between">
+      <%= @question.content %>
+    </p>
+  </div>
+</section>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Edit question and/or re-select category
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <%= render 'edit-form', question: @question %>
+    </div>
+  </div>
+</div>

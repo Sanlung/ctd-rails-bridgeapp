@@ -1,0 +1,53 @@
+<% content_for :h1 do %>Welcome to Bridge<% end %>
+
+<section class="main-message mb-5">
+  <p class="message p-4 p-md-5 rounded shadow">
+    Bridge provides a space primarily for the justice impacted community to seek and offer empirical information about the criminal justice system, namely, information related to pre-commitment proceedings, reality of incarceration,
+    and post-release life. Anyone who has not been invovled directly with the criminal justice system, to include the families and friends of those who have, may also find voices here which address their concerns or answer their
+    questions about a system that significantly impacts millions of lives and the society as a whole. We offer a forum for demystifying aspects of the criminal justice system through the experiences of those who have have been
+    there and who can identify most with those who are effected and want answers.
+  </p>
+</section>
+
+<seciton class="cards">
+  <h1
+    class="text-center text-white display-5 text-uppercase mb-5 bg-transparent shadow rounded"
+  >
+    Concerns
+  </h1>
+  <div
+    class="d-flex flex-column align-items-center flex-md-row align-items-md-stretch justify-content-md-around"
+  >
+    <% @categories.each do |category| %>
+      <div class="card col-md-4 bg-info mx-1 rounded shadow-lg">
+        <% if category.id == 1 %>
+          <%= image_tag 'court.png', alt: 'Pre-commitment', class: 'card-img-top' %>
+        <% elsif category.id == 2 %>
+          <%= image_tag 'prison.png', alt:'In-custody', class: 'card-img-top' %>
+        <% elsif category.id == 3 %>
+          <%= image_tag 'release.png', alt: 'Post-release', class: 'card-img-top' %>
+        <% end %>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-center"><%= category.title %></h5>
+          <% if category.id == 1 %>
+            <p class="card-text">
+              Conerns about pre-conviction detention and legal proceedings such as attorney representation, bail, arraignment, appeals and writs, and trial.
+            </p>
+          <% elsif category.id == 2 %>
+            <p class="card-text">
+              Conerns about post-conviction proceedings, appeals and writs, prison and prison programming, visitation, civil rights in prison, and the like.
+            </p>
+          <% elsif category.id == 3 %>
+            <p class="card-text">
+              Conerns about probation and parole, post-release housing, transportation, health care, education, employment, driver license and ID, and the like.
+            </p>
+          <% end %>
+          <%= link_to category_questions_path(category.id), class: 'btn btn-sm btn-outline-primary fw-bold w-100 text-center mt-auto' do %>
+            Discussions <i class="bi bi-arrow-right"></i
+              >
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</seciton>
