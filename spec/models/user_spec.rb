@@ -5,7 +5,8 @@ RSpec.describe User, type: :model do
     User.new(
       username: 'superhero123',
       email: 'superhero123@super.com',
-      password: '321orehrepus'
+      password: '321orehrepus',
+      password_confirmation: '321orehrepus'
     )
   }
   it 'is valid with valid attributes' do
@@ -31,8 +32,8 @@ RSpec.describe User, type: :model do
     subject.password = nil
     expect(subject).to_not be_valid
   end
-  it 'is not valid if the password is less than 8 cahracters' do
-    subject.password = '321oreh'
+  it 'is not valid if the password is less than 8 characters' do
+    subject.password = '321or'
     expect(subject).to_not be_valid
   end
 end
