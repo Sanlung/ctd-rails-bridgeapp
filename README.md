@@ -1,10 +1,10 @@
-<p align="center"><img src="./storage/github-images/site-screenshot.png" alt="site screenshot" /></p>
+<p align="center"><img src="./readme_img/site-screenshot.png" alt="site screenshot" /></p>
 <h2 align="center">Bridge App</h2>
 <h4 align="center">By Chung Kao</h4>
 <p align="center">for Code the Dream, Orange Starfish 2022</p>
-<p align="left"><img width="150" src="./storage/github-images/ctd-logo.jpeg" /></p>
+<p align="left"><img width="150" src="./readme_img/ctd-logo.jpeg" /></p>
 
-![ruby version](./storage/github-images/ruby-version.svg) ![rails version](./storage/github-images/rails-version.svg) ![puma version](./storage/github-images/puma-version.svg) ![node version](./storage/github-images/node-version.svg) ![license badge](./storage/github-images/license_badge.svg)
+![ruby version](./readme_img/ruby-version.svg) ![rails version](./readme_img/rails-version.svg) ![puma version](./readme_img/puma-version.svg) ![node version](./readme_img/node-version.svg) ![license badge](./readme_img/license_badge.svg)
 
 ## About
 
@@ -85,7 +85,7 @@ Please let me know of any bugs and imperfections. Your input will be greatly app
 
 ### Contributor
 
-[![Chung Kao](./storage/github-images/chung_button.svg)](https://github.com/Sanlung)
+[![Chung Kao](./readme_img/chung_button.svg)](https://github.com/Sanlung)
 
 ### License
 
