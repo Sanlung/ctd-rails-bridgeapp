@@ -3,6 +3,10 @@ class WelcomeController < ApplicationController
   # GET welcome
   def index; end
 
+  def new
+    @user = User.new
+  end
+
   # POST welcome
   def create
     if params[:commit] == 'Sign Up'
@@ -14,7 +18,7 @@ class WelcomeController < ApplicationController
         redirect_to categories_path
       else
         flash.now.alert = 'Invalid information. Please try again.'
-        render :welcome
+        render :index
       end
     elsif params[:commit] == 'Login'
       user = User.find_by(email: params[:email])
@@ -26,7 +30,7 @@ class WelcomeController < ApplicationController
         redirect_to categories_path
       else
         flash.now.alert = 'Invalid email or password. Please try again.'
-        render :welcome
+        render :index
       end
     end
   end
@@ -36,10 +40,11 @@ class WelcomeController < ApplicationController
     # deletes user session
     session[:user_id] = nil
     flash.notice = 'You\'re logged out.'
-    redirect_to root_path
+    redirect_to welcome_path
   end
 
   private
+
   def user_params
     # strong parameters
     params.require(:user).permit(:username, :email, :password, :password_confirmation)

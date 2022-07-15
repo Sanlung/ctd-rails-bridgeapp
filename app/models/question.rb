@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   belongs_to :category
   has_many :answers
 
-  validates :content, presence: true
+  validates :content, :user, :category, presence: true
+  validates :content, uniqueness: true
   validates_associated :answers
 end

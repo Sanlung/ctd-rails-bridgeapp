@@ -1,0 +1,52 @@
+<% content_for :h1 do %>Welcome to Bridge<% end %>
+
+<div class="container login-container d-flex flex-column align-items-center flex-md-row align-items-md-stretch mb-5 p-4 rounded shadow">
+    <!--Login-->
+    <div class="login-form p-3 mb-1 mb-md-0 me-md-1 rounded shadow col-11 col-sm-9 col-md-6 text-primary">
+      <div class="h-100 p-3 border border-light rounded d-flex flex-column">
+        <h3 class="mb-3">Login</h3>
+        <%= form_with url: welcome_path do |f| %>
+          <p>
+          <%= f.label 'email:'%><br>
+          <%= f.text_field :email, id: 'email' %>
+          </p>
+          <p>
+          <%= f.label 'password:'%><br>
+          <%= f.password_field :password, id: 'password' %>
+          </p>
+          <p>
+          <%= f.submit 'Login', class: "btn btn-sm btn-outline-primary" %>
+          </p>
+        <% end %>
+        <p class="no-account mt-auto mb-0 text-end">
+            Go ahead <i class="bi bi-arrow-right"></i>
+        </p>
+      </div>
+    </div>
+    <!--Sign up-->
+    <div class="register-form p-3 rounded shadow col-11 col-sm-9 col-md-6 text-success">
+      <div class="p-3 border border-light rounded d-flex flex-column">
+        <h3 class="mb-3">Sign Up</h3>
+        <%= form_with model: @user, url: welcome_path do |f| %>
+          <p>
+          <%= f.label 'username' %><br>
+          <%= f.text_field :username, id: 'username' %>
+          <p>
+          <%= f.label 'email' %><br>
+          <%= f.text_field :email %>
+          </p>
+          <p>
+          <%= f.label 'password' %><br>
+          <%= f.password_field :password %>
+          </p>
+          <p>
+          <%= f.label 'password_confirmation' %><br>
+          <%= f.password_field :password_confirmation %>
+          </p>
+          <p>
+          <%= f.submit 'Sign Up', class: "btn btn-sm btn-outline-success" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+</div>
