@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'WelcomeControllers', type: :request do
   user_attributes = FactoryBot.attributes_for(:user)
+
   describe 'get welcome_path' do
     it 'renders the index view' do
       get welcome_path
@@ -33,8 +34,15 @@ RSpec.describe 'WelcomeControllers', type: :request do
 
   describe 'post user login with valid data' do
     it 'logs in a user and redirects to the categories_path' do
-      post welcome_path, params: { commit: 'Login', user: user_attributes }
-      expect(response).to redirect_to categories_path
+      post welcome_path, params: { commit: 'Login', user: { email: user_attributes[:email], pssword: user_attributes[:password] } }
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe 'post user login with valid data' do
+    it 'logs in a user and redirects to the categories_path' do
+      post welcome_path, params: { commit: 'Login', user: { email: nil, pssword: user_attributes[:password] } }
+      expect(response).to render_template(:index)
     end
   end
 end
