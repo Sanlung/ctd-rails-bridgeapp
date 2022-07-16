@@ -1,5 +1,5 @@
 <p align="center"><img src="./public/readme/site-screenshot.jpg" alt="site screenshot" /></p>
-<h2 align="center">Bridge App</h2>
+<h2 align="center">The Bridge App</h2>
 <h4 align="center">By Chung Kao</h4>
 <p align="center">for Code the Dream, Orange Starfish 2022</p>
 <p align="left"><img width="150" src="./public/readme/ctd-logo.jpeg" /></p>
