@@ -12,7 +12,7 @@
       <%= form_with url: welcome_path do |f| %>
       <p>
         <%= f.label 'email:'%><br />
-        <%= f.text_field :email, id: 'email' %>
+        <%= f.text_field :email, id: 'email', autofocus: true %>
       </p>
       <p>
         <%= f.label 'password:'%><br />
@@ -50,7 +50,7 @@
         <%= f.label 'password_confirmation' %><br />
         <%= f.password_field :password_confirmation %>
       </p>
-      <p><%= f.submit 'Sign Up', class: "btn btn-sm btn-outline-success" %></p>
+      <p><%= f.submit 'Sign Up', class: "btn btn-sm btn-outline-success", disabled: true %></p>
       <% end %>
     </div>
   </div>
