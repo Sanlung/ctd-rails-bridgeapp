@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
-  before_action :set_category
-  before_action :set_question
+  before_action :set_category, :set_question, :require_login
   before_action :set_answers
   before_action :set_answer, only: %i[edit update destroy]
   before_action :set_user, only: %i[edit create]
@@ -86,9 +85,15 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:content, :question_id, :user_id)
   end
 
+  def require_login
+    unless Current.user
+      redirect_to welcome_path
+    end
+  end
+
   def catch_not_found(e)
     Rails.logger.debug('We had a not found exception')
     flash.alert = e.to_s
-    redirect_to orders_path
+    redirect_to welcome_path
   end
 end

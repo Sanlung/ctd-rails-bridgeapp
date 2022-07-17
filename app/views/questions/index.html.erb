@@ -11,7 +11,8 @@
     <%= link_to 'New or update questions', new_category_question_path(@category.id), type: 'button', class: 'btn btn-primary mb-5 shadow', style: 'letter-spacing: -0.3px' %>
   </div>
   <% @questions.each do |question| %>
-    <%= link_to category_question_answers_path(@category.id, question.id), class: 'btn message w-100 p-3 pb-1 mb-4 rounded shadow text-decoration-none' do %>
+    <!-- <%= link_to category_question_answers_path(@category.id, question.id), class: 'btn message w-100 p-3 pb-1 mb-4 rounded shadow text-decoration-none' do %> -->
+    <div class="btn message w-100 p-3 pb-1 mb-4 rounded shadow test-decoration-none">
       <p class="text-start">
         <i class="bi bi-person-circle"></i>
         <i class="bi bi-dash-lg"></i>
@@ -26,6 +27,7 @@
         <i class="bi bi-dash-lg"></i>
         Click to view answers
       </p>
-    <% end %>
+    </div>
+    <!-- <% end %> -->
   <% end %>
 </section>

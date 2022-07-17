@@ -92,8 +92,8 @@ footer > .container > div > *:not(:last-child) {
   display: block;
 }
 
-.login-form input,
-.register-form input {
+.login-form input:not([type='submit']),
+.register-form input:not([type='submit']) {
   width: 100%;
 }
 
